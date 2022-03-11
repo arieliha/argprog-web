@@ -1,0 +1,11 @@
+<app-add-about-me
+    (onAddAboutMe)="addAboutMe($event)"
+></app-add-about-me>
+<app-about-me-item 
+    *ngFor="let ame of aboutme"
+    [aboutme] = "ame"
+    (onDeleteAboutMe)="deleteAboutMe(ame)"
+    (onToggleReminder)="toggleReminder(ame)"
+    >
+    
+</app-about-me-item>

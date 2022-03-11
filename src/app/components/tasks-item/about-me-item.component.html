@@ -1,0 +1,24 @@
+<!-- <div 
+    class="aboutme"
+    [ngClass]="{ reminder: aboutme.reminder }"
+    (click)="onToggle(aboutme)"
+> -->
+<div 
+    class="aboutme"
+>
+
+    <h3>
+        {{aboutme.fullname}}
+        <fa-icon 
+            [icon]="faTimes"
+            [ngStyle]="{'color':'red'}"
+            (click)="onDelete(aboutme)"
+        >
+        </fa-icon>
+        
+    </h3>
+    <p>
+        {{aboutme.title}}
+    </p>
+
+</div>

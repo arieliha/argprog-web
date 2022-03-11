@@ -1,0 +1,30 @@
+<form class="add-form" (ngSubmit)="onSubmit()"
+    *ngIf="showAddAboutMe"
+>
+    <div class="form-control">
+        <label for="text">Nombre y Apellido</label>
+        <input type="text" name="fullname" id="fullname" placeholder="Agrega tu nombre completo"
+        [(ngModel)]="fullname"/>
+    </div>
+
+    <div class="form-control">
+        <label for="text">Cargo Título</label>
+        <input type="text" name="title" id="title" placeholder="Título"
+        [(ngModel)]="title"/>
+    </div>
+
+    <div class="form-control">
+        <label for="text">PicFile</label>
+        <input type="text" name="picfile" id="picfile" placeholder="picfile"
+        [(ngModel)]="picfile"/>
+    </div>
+
+    <div class="form-control">
+        <label for="text">Descripción</label>
+        <input type="text" name="description" id="description" placeholder="Descripción"
+        [(ngModel)]="description"/>
+    </div>
+
+
+    <input type="submit" value="Save Task" class="btn btn-block">
+</form>
