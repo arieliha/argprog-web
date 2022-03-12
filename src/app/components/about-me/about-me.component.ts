@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AboutMeService } from '../../service/aboutme.service';
 import { AboutMe } from '../../AboutMe';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-about-me',
@@ -9,6 +10,8 @@ import { AboutMe } from '../../AboutMe';
 })
 export class AboutMeComponent implements OnInit {
   aboutme: AboutMe[] = [];
+  isUpdate: boolean = false;
+  faPencilAlt = faPencilAlt;
   
   constructor(
 
@@ -22,6 +25,10 @@ export class AboutMeComponent implements OnInit {
       this.aboutme = ame;
     });
   }
+
+  onUpdate() {
+    this.isUpdate = !this.isUpdate;
+  }
   deleteAboutMe(ame: AboutMe){
     this.aboutMeService.deleteAboutMe(ame).subscribe(() => { 
       this.aboutme = this.aboutme.filter(a => { 
@@ -29,11 +36,11 @@ export class AboutMeComponent implements OnInit {
         return a.id !== ame.id});
     });
   }
-  // toggleReminder(ame: AboutMe){
-    // ame.reminder = !ame.reminder;
-    // console.log(task.reminder);
-    // this.aboutMeService.updateAboutme(ame).subscribe();
-  // }
+  updateAboutMe (ame: AboutMe){
+    
+    console.log(ame);
+    this.aboutMeService.updateAboutme(ame).subscribe();
+  }
 
   addAboutMe(ame: AboutMe) {
     console.log(ame);

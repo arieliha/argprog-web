@@ -17,8 +17,10 @@
         
     </div>
     <div style="width: 70%; display: inline-block; padding: 4rem;">
+        <fa-icon [icon]="faPencilAlt" (click)="onUpdate()">
+        </fa-icon>
         <app-about-me-item *ngFor="let ame of aboutme" [aboutme]="ame" (onDeleteAboutMe)="deleteAboutMe(ame)"
-            (onToggleReminder)="toggleReminder(ame)">
+            [isupdate]="isUpdate" (onUpdateAboutMe)="updateAboutMe(ame)">
 
         </app-about-me-item>
         <app-add-about-me (onAddAboutMe)="addAboutMe($event)"></app-add-about-me>        

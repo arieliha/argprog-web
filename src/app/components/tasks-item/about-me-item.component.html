@@ -3,25 +3,35 @@
     [ngClass]="{ reminder: aboutme.reminder }"
     (click)="onToggle(aboutme)"
 > -->
-<div 
-    class="aboutme"
->
+<div class="aboutme">
 
-    <h3>
-        {{aboutme.fullname}}
-        <fa-icon 
-            [icon]="faTimes"
-            [ngStyle]="{'color':'red'}"
-            (click)="onDelete(aboutme)"
-        >
-        </fa-icon>
-        
-    </h3>
-    <p>
-        {{aboutme.title}}
-    </p>
-    <p>
-        {{aboutme.description}}
-    </p>
+    <fa-icon [icon]="faTimes" [ngStyle]="{'color':'red'}" (click)="onDelete(aboutme)">
+    </fa-icon>
+
+    <div class="form-control">
+        <label for="text">Nombre y Apellido</label>
+        <input type="text" name="fullname" id="fullname" placeholder="Agrega tu nombre completo" [(ngModel)]="model.fullname"
+            [disabled]="!isupdate" />
+    </div>
+
+    <div class="form-control">
+        <label for="text">Cargo Título</label>
+        <input type="text" name="title" id="title" placeholder="Título" [(ngModel)]="model.title" [disabled]="!isupdate" />
+    </div>
+
+    <!-- <div class="form-control">
+        <label for="text">PicFile</label>
+        <input type="text" name="picfile" id="picfile" placeholder="picfile"
+        [(ngModel)]="picfile"/>
+    </div> -->
+
+    <div class="form-control">
+        <label for="text">Descripción</label>
+        <input type="text" name="description" id="description" placeholder="Descripción" [(ngModel)]="model.description"
+            [disabled]="!isupdate" />
+    </div>
+
+    <fa-icon [icon]="faCheckSquare" (click)="onSubmit()" *ngIf="isupdate" aria-placeholder="Guardar">
+    </fa-icon>
 
 </div>

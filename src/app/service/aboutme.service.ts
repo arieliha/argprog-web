@@ -32,7 +32,7 @@ export class AboutMeService {
   }
 
   updateAboutme (aboutme: AboutMe): Observable<AboutMe> {
-    const url = `${this.apiUrl}/${aboutme.id}`
+    const url = `${this.apiUrl}/editar/${aboutme.id}`
     return this.http.put<AboutMe>(url, aboutme, httpOptions)
 
   }
