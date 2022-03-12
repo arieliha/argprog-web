@@ -1,11 +1,30 @@
-<app-add-about-me
-    (onAddAboutMe)="addAboutMe($event)"
-></app-add-about-me>
-<app-about-me-item 
-    *ngFor="let ame of aboutme"
-    [aboutme] = "ame"
-    (onDeleteAboutMe)="deleteAboutMe(ame)"
-    (onToggleReminder)="toggleReminder(ame)"
-    >
-    
-</app-about-me-item>
+<div style="display: block;">
+    <div style="width: 80%; margin-left: auto; margin-right: auto;">
+        <img src="assets/banner.jpg" alt="" style="width: 100%; height: 500px;">
+    </div>
+
+    <div style="display: flex; width: 100%; margin: 2rem;">
+    <div style="width: 30%; display: inline-flex;">
+        <div style="display: block; height: 100%; width: 100%; text-align: center;">
+            <div>
+            <img src="assets/ari_perfil.jpg" alt="" style="border-radius: 50%; width: 100px; height: 100px;">
+            </div>
+            <div>
+            Ariel Iha
+            Programador Fullstack
+            </div>
+        </div>
+        
+    </div>
+    <div style="width: 70%; display: inline-block; padding: 4rem;">
+        <app-about-me-item *ngFor="let ame of aboutme" [aboutme]="ame" (onDeleteAboutMe)="deleteAboutMe(ame)"
+            (onToggleReminder)="toggleReminder(ame)">
+
+        </app-about-me-item>
+        <app-add-about-me (onAddAboutMe)="addAboutMe($event)"></app-add-about-me>        
+    </div>
+    </div>
+
+
+
+</div>

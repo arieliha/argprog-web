@@ -6,5 +6,10 @@ header{
     color: aliceblue;
     align-items: center;
     margin-bottom: 20px;
+    height: 4rem;
     
+}
+img {
+    height: 40px;
+    width: auto;
 }
