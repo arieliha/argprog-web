@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AboutMeService } from '../../service/aboutme.service';
 import { AboutMe } from '../../AboutMe';
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-about-me',
@@ -10,8 +10,8 @@ import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 })
 export class AboutMeComponent implements OnInit {
   aboutme: AboutMe[] = [];
-  isUpdate: boolean = false;
-  faPencilAlt = faPencilAlt;
+  // isUpdate: boolean = false;
+  
   
   constructor(
 
@@ -26,9 +26,9 @@ export class AboutMeComponent implements OnInit {
     });
   }
 
-  onUpdate() {
-    this.isUpdate = !this.isUpdate;
-  }
+  // onUpdate() {
+  //   this.isUpdate = !this.isUpdate;
+  // }
   deleteAboutMe(ame: AboutMe){
     this.aboutMeService.deleteAboutMe(ame).subscribe(() => { 
       this.aboutme = this.aboutme.filter(a => { 
@@ -38,8 +38,33 @@ export class AboutMeComponent implements OnInit {
   }
   updateAboutMe (ame: AboutMe){
     
-    console.log(ame);
-    this.aboutMeService.updateAboutme(ame).subscribe();
+    this.aboutMeService.updateAboutme(ame).subscribe((r) => {
+      if (r) {alert ("Cambios guardados")}
+    });
+  }
+
+  moveDown (ame: AboutMe){
+    const index = this.aboutme.findIndex(x => x.id === ame.id);
+    
+    if (this.aboutme.length > 1 && index < this.aboutme.length -1){
+    const tmp = this.aboutme[index + 1]
+    if (tmp) {
+    this.aboutme[index +1] = this.aboutme[index];
+    this.aboutme[index] = tmp;
+    }
+    }
+  }
+
+  moveUp (ame: AboutMe){
+    const index = this.aboutme.findIndex(x => x.id === ame.id);
+    
+    if (this.aboutme.length > 1 && index > 0){
+    const tmp = this.aboutme[index - 1]
+    if (tmp) {
+    this.aboutme[index -1] = this.aboutme[index];
+    this.aboutme[index] = tmp;
+    }
+    }
   }
 
   addAboutMe(ame: AboutMe) {
