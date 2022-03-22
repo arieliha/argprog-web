@@ -1,5 +1,16 @@
-<div>
-    <h2>Task Tracker</h2>
-    <h2>v 1.0.0</h2>
-    <a routerLink="/">Go Back</a>
+<div style="width: 100%; text-align: center; display: block;">
+
+    <h2>Argentina Programa Trabajo Práctico</h2>
+    <div style="display: inline-flex; justify-items: center; align-items: center; margin: 1rem;">
+        <div style="margin-right: 1rem;">
+            <h5>{{num1}} - {{num2}}</h5>
+        </div>
+        <div>
+            <input type="text" [(ngModel)]="userresult" placeholder="resultado de la cuenta">
+        </div>
+    </div>
+    <button (click)="validate()">validar</button>
+    <div *ngIf="showEnter">
+        <a routerLink="/aboutMe" class="btn">Entrar</a>
+    </div>
 </div>

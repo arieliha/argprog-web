@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ButtonComponent } from './components/button/button.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
-import { AboutMeItemComponent } from './components/tasks-item/about-me-item.component';
+import { AboutMeItemComponent } from './components/add-about-me-item/about-me-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { AddAboutMeComponent } from './components/add-about-me/add-about-me.component';
@@ -16,8 +16,10 @@ import { FooterComponent } from './components/footer/footer.component';
 
 const appRoutes: Routes = [
 
-  {path: '', component: AboutMeComponent},
-  {path: 'about', component: AboutComponent}
+  {path: '', component: AboutComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'aboutMe', component: AboutMeComponent}
+
 ]
 
 

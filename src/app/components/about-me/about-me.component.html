@@ -11,8 +11,20 @@
             </div>
             <div>
             Ariel Iha
-            Programador Fullstack
+            Programador Fullstack Jr.
             </div>
+        
+            <div>
+                <div style="background-color: black; color: white; text-align: left; padding: 0.5rem; margin-top: 0.5rem;"> Acerca de </div>
+                <div *ngFor="let ame of aboutme" style="display: block; text-align: left;">
+                    <br />
+                    {{ame.fullname}} <br />
+                    {{ame.title}} <br />
+                    {{ame.description}} <br />
+
+        
+                </div>
+                </div>
         </div>
         
     </div>
