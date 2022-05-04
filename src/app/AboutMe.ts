@@ -5,5 +5,6 @@ export interface AboutMe {
     title: string;
     picfile: string;
     description: string;
+    order_about_me: number;
 
 }

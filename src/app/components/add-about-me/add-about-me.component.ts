@@ -15,6 +15,7 @@ export class AddAboutMeComponent implements OnInit {
   title: string = "";
   picfile: string = "";
   description: string = "";
+  order_about_me: number = 0;
   subscription: Subscription;
   showAddAboutMe = true;
   constructor(
@@ -44,8 +45,8 @@ export class AddAboutMeComponent implements OnInit {
       alert("Por favor agrega una descripción");
       return
     }
-    const {id, fullname, title, picfile, description} = this
-    const newAboutMe = {id, fullname, title, picfile, description}
+    const {id, fullname, title, picfile, description, order_about_me} = this
+    const newAboutMe = {id, fullname, title, picfile, description, order_about_me}
 
     this.onAddAboutMe.emit(newAboutMe);
     this.resetForm();

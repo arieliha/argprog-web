@@ -50,7 +50,10 @@
             [disabled]="!isupdate" />
     </div>
 
-    <fa-icon [icon]="faCheckSquare" (click)="onSubmit()" *ngIf="isupdate" aria-placeholder="Guardar">
+    <div *ngIf="isupdate">
+    Guardar Cambios
+    <fa-icon [icon]="faCheckSquare" (click)="onSubmit()" aria-placeholder="Guardar">
     </fa-icon>
+    </div>
 
 </div>
