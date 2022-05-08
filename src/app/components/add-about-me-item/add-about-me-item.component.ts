@@ -8,13 +8,13 @@ import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
-  selector: 'app-about-me-item',
-  templateUrl: './about-me-item.component.html',
-  styleUrls: ['./about-me-item.component.css']
+  selector: 'app-add-about-me-item',
+  templateUrl: './add-about-me-item.component.html',
+  styleUrls: ['./add-about-me-item.component.css']
 })
 
 
-export class AboutMeItemComponent implements OnInit {
+export class AddAboutMeItemComponent implements OnInit {
 
   public model: AboutMe;
   public isupdate: boolean = false;

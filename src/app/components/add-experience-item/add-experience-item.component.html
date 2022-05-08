@@ -1,0 +1,52 @@
+<!-- <div 
+    class="aboutme"
+    [ngClass]="{ reminder: aboutme.reminder }"
+    (click)="onToggle(aboutme)"
+> -->
+<div class="experience">
+    <div style="display: flex; width: 100%; justify-content: flex-end;">
+    <div style="display: inline-block; margin: 1rem;">
+    <fa-icon [icon]="faTimes" [ngStyle]="{'color':'red'}" (click)="onDelete()">
+    </fa-icon>
+    </div>
+    <div style="display: inline-block; margin: 1rem">
+    <fa-icon [icon]="faPencilAlt" (click)="onUpdate()" [ngStyle]="isupdate ? {'color':'darkgray'} : {'color': 'green'}">
+    </fa-icon>
+    </div>
+    <div style="display: inline-block; margin: 1rem">
+        <button [disabled]="model.id == final">
+            <fa-icon [icon]="faArrowDown" (click)="onDown()">
+        </fa-icon>
+        </button>
+    </div>
+    <div style="display: inline-block; margin: 1rem">
+        <button [disabled]="model.id == begin">
+        <fa-icon [icon]="faArrowUp" (click)="onUp()">
+        </fa-icon>
+        </button>
+    </div>
+    </div>
+
+    <div class="form-control">
+        <label for="text">Cargo Título</label>
+        <input type="text" name="title" id="title" placeholder="Título" [(ngModel)]="model.title" [disabled]="!isupdate" />
+    </div>
+
+    <div class="form-control">
+        <label for="text">Período</label>
+        <input type="text" name="period" id="period" placeholder="Agrega el período" [(ngModel)]="model.period"
+            [disabled]="!isupdate" />
+    </div>
+
+    <div class="form-control">
+        <label for="text">Descripción</label>
+        <input type="text" name="description" id="description" placeholder="Descripción" [(ngModel)]="model.description"
+            [disabled]="!isupdate" />
+    </div>
+
+    <div *ngIf="isupdate">
+    Guardar Cambios
+    <fa-icon [icon]="faCheckSquare" (click)="onSubmit()" aria-placeholder="Guardar">
+    </fa-icon>
+    </div>
+</div>

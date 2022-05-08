@@ -4,7 +4,7 @@ import { AboutMe } from '../../AboutMe';
 import { UiService } from '../../service/ui.service';
 
 @Component({
-  selector: 'app-add-about-me',
+  selector: 'add-about-me',
   templateUrl: './add-about-me.component.html',
   styleUrls: ['./add-about-me.component.css']
 })

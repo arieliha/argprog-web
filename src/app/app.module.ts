@@ -3,22 +3,24 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ButtonComponent } from './components/button/button.component';
-import { AboutMeComponent } from './components/about-me/about-me.component';
-import { AboutMeItemComponent } from './components/add-about-me-item/about-me-item.component';
+import { ArgProgMainComponent } from './components/arg-prog-main/arg-prog-main.component';
+import { AddAboutMeItemComponent } from './components/add-about-me-item/add-about-me-item.component';
+import { AddExperienceItemComponent } from './components/add-experience-item/add-experience-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { AddAboutMeComponent } from './components/add-about-me/add-about-me.component';
+import { AddExperienceComponent } from './components/add-experience/add-experience.component';
 import { FormsModule} from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './components/about/about.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 
 const appRoutes: Routes = [
 
-  {path: '', component: AboutComponent},
-  {path: 'about', component: AboutComponent},
-  {path: 'aboutMe', component: AboutMeComponent}
+  {path: '', component: WelcomeComponent},
+  // {path: 'about', component: AboutComponent},
+  {path: 'argProgMain', component: ArgProgMainComponent}
 
 ]
 
@@ -28,10 +30,12 @@ const appRoutes: Routes = [
     AppComponent,
     HeaderComponent,
     ButtonComponent,
-    AboutMeComponent,
-    AboutMeItemComponent,
+    WelcomeComponent,
+    AddAboutMeItemComponent,
+    AddExperienceItemComponent,
     AddAboutMeComponent,
-    AboutComponent,
+    AddExperienceComponent,
+    ArgProgMainComponent,
     FooterComponent
   ],
   imports: [

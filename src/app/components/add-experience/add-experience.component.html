@@ -1,0 +1,24 @@
+<form class="add-form" (ngSubmit)="onSubmit()" *ngIf="showAddExperience">
+    
+
+    <div class="form-control">
+        <label for="text">Cargo Título</label>
+        <input type="text" name="title" id="title" placeholder="Título"
+        [(ngModel)]="title"/>
+    </div>
+
+    <div class="form-control">
+        <label for="text">Período</label>
+        <input type="text" name="period" id="period" placeholder="Agrega el período mm/aaaa - mm/aaaa"
+        [(ngModel)]="period"/>
+    </div>
+
+    <div class="form-control">
+        <label for="text">Descripción</label>
+        <input type="text" name="description" id="description" placeholder="Descripción"
+        [(ngModel)]="description"/>
+    </div>
+
+
+    <input type="submit" value="Guardar Experiencia" class="btn btn-block">
+</form>
