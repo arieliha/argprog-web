@@ -16,8 +16,7 @@
                 </div>
 
                 <div>
-                    <div
-                        style="background-color: black; color: white; text-align: left; padding: 0.5rem; margin-top: 0.5rem;">
+                    <div style="background-color: black; color: white; text-align: left; padding: 0.5rem; margin-top: 0.5rem;">
                         Acerca de </div>
                     <div *ngFor="let ame of aboutme" style="display: block; text-align: left;">
                         <br />
@@ -25,7 +24,8 @@
                         {{ame.title}} <br />
                         {{ame.description}} <br />
                     </div>
-
+                    <div style="background-color: black; color: white; text-align: left; padding: 0.5rem; margin-top: 0.5rem;">
+                        Experiencia </div>
                     <div *ngFor="let exp of experiences" style="display: block; text-align: left;">
                         <br />
                         {{exp.title}} <br />
