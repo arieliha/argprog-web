@@ -5,48 +5,54 @@
 > -->
 <div class="experience">
     <div style="display: flex; width: 100%; justify-content: flex-end;">
-    <div style="display: inline-block; margin: 1rem;">
-    <fa-icon [icon]="faTimes" [ngStyle]="{'color':'red'}" (click)="onDelete()">
-    </fa-icon>
-    </div>
-    <div style="display: inline-block; margin: 1rem">
-    <fa-icon [icon]="faPencilAlt" (click)="onUpdate()" [ngStyle]="isupdate ? {'color':'darkgray'} : {'color': 'green'}">
-    </fa-icon>
-    </div>
-    <div style="display: inline-block; margin: 1rem">
-        <button [disabled]="model.id == final">
-            <fa-icon [icon]="faArrowDown" (click)="onDown()">
-        </fa-icon>
-        </button>
-    </div>
-    <div style="display: inline-block; margin: 1rem">
-        <button [disabled]="model.id == begin">
-        <fa-icon [icon]="faArrowUp" (click)="onUp()">
-        </fa-icon>
-        </button>
-    </div>
-    </div>
-
-    <div class="form-control">
-        <label for="text">Cargo Título</label>
-        <input type="text" name="title" id="title" placeholder="Título" [(ngModel)]="model.title" [disabled]="!isupdate" />
+        <div style="display: inline-block; margin: 1rem;">
+            <button mat-icon-button [ngStyle]="{'color':'red'}" (click)="onDelete()">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+        <div style="display: inline-block; margin: 1rem">
+            <button mat-icon-button (click)="onUpdate()" [ngStyle]="isupdate ? {'color':'darkgray'} : {'color': 'green'}">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
+        <div style="display: inline-block; margin: 1rem">
+            <button mat-icon-button [disabled]="model.id == final" (click)="onDown()">
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+        </div>
+        <div style="display: inline-block; margin: 1rem">
+            <button mat-icon-button	[disabled]="model.id == begin" (click)="onUp()">
+                <mat-icon>keyboard_arrow_up</mat-icon>
+            </button>
+        </div>
     </div>
 
-    <div class="form-control">
-        <label for="text">Período</label>
-        <input type="text" name="period" id="period" placeholder="Agrega el período" [(ngModel)]="model.period"
-            [disabled]="!isupdate" />
+
+    <div class="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Cargo/Título</mat-label>
+            <input matInput type="text" [(ngModel)]="model.title" [disabled]="!isupdate" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Período</mat-label>
+            <input matInput type="text" [(ngModel)]="model.period" [disabled]="!isupdate" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput type="text" [(ngModel)]="model.description" [disabled]="!isupdate"></textarea>
+        </mat-form-field>
     </div>
 
-    <div class="form-control">
-        <label for="text">Descripción</label>
-        <input type="text" name="description" id="description" placeholder="Descripción" [(ngModel)]="model.description"
-            [disabled]="!isupdate" />
-    </div>
 
-    <div *ngIf="isupdate">
-    Guardar Cambios
-    <fa-icon [icon]="faCheckSquare" (click)="onSubmit()" aria-placeholder="Guardar">
-    </fa-icon>
+        
+    
+    <div style="width: 100%; text-align: center; background-color:darkseagreen" *ngIf="isupdate">
+    
+            <button mat-icon-button (click)="onSubmit()" aria-placeholder="Guardar Cambios">
+            <mat-icon>save</mat-icon>
+            </button>
+            
     </div>
 </div>
