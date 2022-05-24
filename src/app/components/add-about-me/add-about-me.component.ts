@@ -11,9 +11,7 @@ import { UiService } from '../../service/ui.service';
 export class AddAboutMeComponent implements OnInit {
   @Output() onAddAboutMe: EventEmitter<AboutMe> = new EventEmitter();
   id: number = 0;
-  fullname: string = "";
   title: string = "";
-  picfile: string = "";
   description: string = "";
   order_about_me: number = 0;
   subscription: Subscription;
@@ -31,10 +29,7 @@ export class AddAboutMeComponent implements OnInit {
   }
 
   onSubmit(){
-    if(this.fullname.length === 0){
-      alert("Por favor agrega un nombre");
-      return
-    }
+    
 
     if(this.title.length === 0){
       alert("Por favor agrega un título");
@@ -45,8 +40,8 @@ export class AddAboutMeComponent implements OnInit {
       alert("Por favor agrega una descripción");
       return
     }
-    const {id, fullname, title, picfile, description, order_about_me} = this
-    const newAboutMe = {id, fullname, title, picfile, description, order_about_me}
+    const {id, title, description, order_about_me} = this
+    const newAboutMe = {id, title, description, order_about_me}
 
     this.onAddAboutMe.emit(newAboutMe);
     this.resetForm();
@@ -54,9 +49,8 @@ export class AddAboutMeComponent implements OnInit {
     
   }
 resetForm() {
-  this.fullname = "";
+  
   this.title = "";
-  this.picfile = "";
   this.description = "";  
 }
 }

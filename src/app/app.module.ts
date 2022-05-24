@@ -6,10 +6,12 @@ import { ButtonComponent } from './components/button/button.component';
 import { ArgProgMainComponent } from './components/arg-prog-main/arg-prog-main.component';
 import { AddAboutMeItemComponent } from './components/add-about-me-item/add-about-me-item.component';
 import { AddExperienceItemComponent } from './components/add-experience-item/add-experience-item.component';
+import { AddEducationItemComponent } from './components/add-education-item/add-education-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { AddAboutMeComponent } from './components/add-about-me/add-about-me.component';
 import { AddExperienceComponent } from './components/add-experience/add-experience.component';
+import { AddEducationComponent } from './components/add-education/add-education.component';
 import { FormsModule} from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './components/welcome/welcome.component';
@@ -33,8 +35,10 @@ const appRoutes: Routes = [
     WelcomeComponent,
     AddAboutMeItemComponent,
     AddExperienceItemComponent,
+    AddEducationItemComponent,
     AddAboutMeComponent,
     AddExperienceComponent,
+    AddEducationComponent,
     ArgProgMainComponent,
     FooterComponent
   ],

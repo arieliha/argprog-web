@@ -1,0 +1,27 @@
+<form class="add-form" (ngSubmit)="onSubmit()" *ngIf="showEducation">
+    <div class="form-control">
+        <label for="text">Título</label>
+        <input type="text" name="title" id="title" placeholder="Título"
+        [(ngModel)]="title"/>
+    </div>
+
+    <div class="form-control">
+        <label for="text">Instituto</label>
+        <input type="text" name="institute" id="institute" placeholder="Instituto"
+        [(ngModel)]="institute"/>
+    </div>
+
+    <div class="form-control">
+        <label for="text">Período</label>
+        <input type="text" name="period" id="period" placeholder="Período"
+        [(ngModel)]="period"/>
+    </div>
+
+    <div class="form-control">
+        <label for="text">Descripción</label>
+        <input type="text" name="description" id="description" placeholder="Descripción"
+        [(ngModel)]="description"/>
+    </div>
+
+    <input type="submit" value="Guardar Educación" class="btn btn-block">
+</form>

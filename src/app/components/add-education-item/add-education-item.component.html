@@ -27,17 +27,35 @@
     </div>
     </div>
 
+    <div class="form-control">
+        <label for="text">Título</label>
+        <input type="text" name="title" id="title" placeholder="Título" [(ngModel)]="model.title"
+            [disabled]="!isupdate" />
+    </div>
 
     <div class="form-control">
-        <label for="text">Cargo/Título</label>
-        <input type="text" name="title" id="title" placeholder="Título" [(ngModel)]="model.title" [disabled]="!isupdate" />
+        <label for="text">Instituto</label>
+        <input type="text" name="institute" id="institute" placeholder="Instituto" [(ngModel)]="model.institute" [disabled]="!isupdate" />
     </div>
+    
+    <div class="form-control">
+        <label for="text">Período</label>
+        <input type="text" name="period" id="period" placeholder="Período" [(ngModel)]="model.period"
+            [disabled]="!isupdate" />
+    </div>
+
+    <!-- <div class="form-control">
+        <label for="text">PicFile</label>
+        <input type="text" name="picfile" id="picfile" placeholder="picfile"
+        [(ngModel)]="picfile"/>
+    </div> -->
 
     <div class="form-control">
         <label for="text">Descripción</label>
         <input type="text" name="description" id="description" placeholder="Descripción" [(ngModel)]="model.description"
             [disabled]="!isupdate" />
     </div>
+    
 
     <div *ngIf="isupdate">
     Guardar Cambios

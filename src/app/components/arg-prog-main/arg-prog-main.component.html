@@ -32,6 +32,15 @@
                         {{exp.period}} <br />
                         {{exp.description}} <br />
                     </div>
+                    <div style="background-color: black; color: white; text-align: left; padding: 0.5rem; margin-top: 0.5rem;">
+                        Educación </div>
+                    <div *ngFor="let educ of educations" style="display: block; text-align: left;">
+                        <br />
+                        {{educ.title}} <br />
+                        {{educ.institute}} <br />
+                        {{educ.period}} <br />
+                        {{educ.description}} <br />
+                    </div>
                 </div>
             </div>
 
@@ -54,6 +63,18 @@
                     (onArrowDown)="moveDownExp(exp)">
                 </app-add-experience-item>
                 <add-experience (onAddExperience)="addExperience($event)"></add-experience>
+
+            </div>
+
+            <div>
+
+                Educación
+                <app-add-education-item *ngFor="let educ of educations" [education]="educ" [begin]="educations[0].id"
+                    [final]="educations[educations.length -1].id" (onDeleteEducation)="deleteEducation(educ)"
+                    (onUpdateEducation)="updateEducation(educ)" (onArrowUp)="moveUpEduc(educ)"
+                    (onArrowDown)="moveDownEduc(educ)">
+                </app-add-education-item>
+                <add-education (onAddEducation)="addEducation($event)"></add-education>
 
             </div>
 

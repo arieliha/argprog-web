@@ -4,6 +4,8 @@ import { ExperienceService } from '../../service/experience.service';
 import { AboutMe } from '../../AboutMe';
 import { Experience } from '../../Experience';
 import { LocationStrategy } from '@angular/common';
+import { Education } from '../../Education';
+import { EducationService } from '../../service/education.service';
 
 
 
@@ -16,12 +18,14 @@ export class ArgProgMainComponent implements OnInit {
   aboutme: AboutMe[] = [];
   experiences: Experience[] = [];
   // isUpdate: boolean = false;
+  educations:  Education[] = [];
 
 
   constructor(
     private location: LocationStrategy,
     private aboutMeService: AboutMeService,
-    private experienceService: ExperienceService
+    private experienceService: ExperienceService,
+    private educationService: EducationService
   ) { 
     history.pushState(null, null, window.location.href);  
     this.location.onPopState(() => {
@@ -35,6 +39,10 @@ export class ArgProgMainComponent implements OnInit {
       this.aboutme = ame.sort((a, b) => a.order_about_me - b.order_about_me);
         this.experienceService.getExperience().subscribe(exp => {
           this.experiences = exp.sort((a,b) => a.order_experience - b.order_experience);
+            this.educationService.getEducation().subscribe(educ => {
+              this.educations = educ;
+            });
+          
       });
     });
   }
@@ -64,6 +72,18 @@ export class ArgProgMainComponent implements OnInit {
       this.aboutme.push(a);
     })
   }
+
+  addEducation(educ: Education) {
+    console.log(educ);
+    if (this.educations.length > 0) {
+      educ.order_education= this.educations[this.educations.length - 1].order_education + 1;
+    } else {
+      educ.order_education = 1;
+    }
+    this.educationService.addEducation(educ).subscribe((e) => {
+      this.educations.push(e);
+    })
+  }
   updateExperience(exp: Experience) {
 
     this.experienceService.updateExperience(exp).subscribe((r) => {
@@ -74,6 +94,12 @@ export class ArgProgMainComponent implements OnInit {
 
     this.aboutMeService.updateAboutme(ame).subscribe((r) => {
       if (r) { alert("Cambios guardados") }
+    });
+  }
+  updateEducation(educ: Education) {
+
+    this.educationService.updateEducation(educ).subscribe((e) => {
+      if (e) { alert("Cambios guardados") }
     });
   }
   deleteExperience(exp: Experience) {
@@ -89,6 +115,14 @@ export class ArgProgMainComponent implements OnInit {
       this.aboutme = this.aboutme.filter(a => {
         console.log("delete aboutme " + ame.id)
         return a.id !== ame.id
+      });
+    });
+  }
+  deleteEducation(educ: Education) {
+    this.educationService.deleteEducation(educ).subscribe(() => {
+      this.educations = this.educations.filter(e => {
+        console.log("delete aboutme " + educ.id)
+        return e.id !== educ.id
       });
     });
   }
@@ -132,6 +166,30 @@ export class ArgProgMainComponent implements OnInit {
         this.experienceService.updateExperience(this.experiences[index]).subscribe(x => {
           if (x) {
             this.experienceService.updateExperience(this.experiences[index - 1]).subscribe(y => {
+              // if (y) {alert ("Cambios guardados")}
+            });
+          }
+        });
+      }
+    }
+  }
+
+  moveUpEduc(educ: Education) {
+    const index = this.educations.findIndex(x => x.id === educ.id);
+
+    if (this.educations.length > 1 && index > 0) {
+      const tmp = this.educations[index - 1];
+      const tmporder = this.educations[index - 1].order_education;
+      const tmporderindex = this.educations[index].order_education;
+      if (tmp) {
+        this.educations[index - 1] = this.educations[index];
+        this.educations[index - 1].order_education = tmporder;
+        this.educations[index] = tmp;
+        this.educations[index].order_education = tmporderindex;
+
+        this.educationService.updateEducation(this.educations[index]).subscribe(x => {
+          if (x) {
+            this.educationService.updateEducation(this.educations[index - 1]).subscribe(y => {
               // if (y) {alert ("Cambios guardados")}
             });
           }
@@ -185,6 +243,33 @@ export class ArgProgMainComponent implements OnInit {
         this.experienceService.updateExperience(this.experiences[index]).subscribe(x => {
           if (x) {
             this.experienceService.updateExperience(this.experiences[index + 1]).subscribe(y => {
+              // if (y) {alert ("Cambios guardados")}
+            });
+          }
+        });
+      }
+    }
+  }
+
+  moveDownEduc(educ: Education) {
+    const index = this.educations.findIndex(x => x.id === educ.id);
+
+    if (this.educations.length > 1 && index < this.educations.length - 1) {
+      const tmp = this.educations[index + 1];
+      const tmporder = this.educations[index + 1].order_education;
+      const tmporderindex = this.educations[index].order_education;
+
+      if (tmp) {
+        this.educations[index + 1] = this.educations[index];
+        this.educations[index + 1].order_education = tmporder;
+
+        this.educations[index] = tmp;
+        this.educations[index].order_education = tmporderindex;
+
+
+        this.educationService.updateEducation(this.educations[index]).subscribe(x => {
+          if (x) {
+            this.educationService.updateEducation(this.educations[index + 1]).subscribe(y => {
               // if (y) {alert ("Cambios guardados")}
             });
           }
