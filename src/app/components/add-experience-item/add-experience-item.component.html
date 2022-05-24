@@ -35,6 +35,11 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
+            <mat-label>Empresa</mat-label>
+            <input matInput type="text" [(ngModel)]="model.company" [disabled]="!isupdate" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
             <mat-label>Período</mat-label>
             <input matInput type="text" [(ngModel)]="model.period" [disabled]="!isupdate" />
         </mat-form-field>

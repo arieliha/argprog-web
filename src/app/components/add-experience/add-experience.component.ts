@@ -13,6 +13,7 @@ export class AddExperienceComponent implements OnInit {
   id: number = 0;
   
   title: string = "";
+  company: string = "";
   period: string = "";
   description: string = "";
   order_experience: number = 0;
@@ -37,6 +38,11 @@ export class AddExperienceComponent implements OnInit {
       alert("Por favor agrega un título");
       return
     }
+
+    if(this.company.length === 0){
+      alert("Por favor agrega una Empresa");
+      return
+    }
     
     if(this.period.length === 0){
       alert("Por favor agrega un perìodo");
@@ -47,8 +53,8 @@ export class AddExperienceComponent implements OnInit {
       alert("Por favor agrega una descripción");
       return
     }
-    const {id, title, period, description, order_experience} = this
-    const newExperience = {id, title, period, description, order_experience}
+    const {id, title, company, period, description, order_experience} = this
+    const newExperience = {id, title, company, period, description, order_experience}
 
     this.onAddExperience.emit(newExperience);
     this.resetForm();
@@ -57,6 +63,7 @@ export class AddExperienceComponent implements OnInit {
   }
 resetForm() {
   this.title = "";
+  this.company = "";
   this.period = "";
   this.description = "";
  
