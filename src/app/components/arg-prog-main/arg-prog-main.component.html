@@ -72,6 +72,41 @@
                         {{educ.period}} <br />
                         {{educ.description}} <br />
                     </div>
+
+                    <div style="padding: 2rem;">
+                        Idiomas
+                        <canvas baseChart 
+                            [data]="pieChartData" 
+                            [labels]="pieChartLabels" 
+                            [chartType]="pieChartType"
+                            [options]="pieChartOptions"
+                            [plugins]="pieChartPlugins"
+                            [legend]="pieChartLegend">
+                        </canvas>
+                    </div>
+                    <div style="padding: 2rem;">
+                        Habilidades Blandas
+                        <canvas baseChart 
+                            [data]="pieChartDataTwo" 
+                            [labels]="pieChartLabelsTwo" 
+                            [chartType]="pieChartTypeTwo"
+                            [options]="pieChartOptionsTwo"
+                            [plugins]="pieChartPluginsTwo"
+                            [legend]="pieChartLegendTwo">
+                        </canvas>
+                    </div>
+
+                    <div style="padding: 2rem;">
+                        Habilidades Duras
+                        <canvas baseChart 
+                            [data]="pieChartDataThree" 
+                            [labels]="pieChartLabelsThree" 
+                            [chartType]="pieChartTypeThree"
+                            [options]="pieChartOptionsThree"
+                            [plugins]="pieChartPluginsThree"
+                            [legend]="pieChartLegendThree">
+                        </canvas>
+                    </div>
                 </div>
             </div>
 

@@ -6,7 +6,8 @@ import { Experience } from '../../Experience';
 import { LocationStrategy } from '@angular/common';
 import { Education } from '../../Education';
 import { EducationService } from '../../service/education.service';
-
+import { ChartType, ChartOptions } from 'chart.js';
+import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, } from 'ng2-charts';
 
 
 @Component({
@@ -20,6 +21,33 @@ export class ArgProgMainComponent implements OnInit {
   // isUpdate: boolean = false;
   educations:  Education[] = [];
 
+  public pieChartOptions: ChartOptions = {
+    responsive: true,
+  };
+  public pieChartLabels: Label[] = ['Español', 'Inglés', 'Japonés'];
+  public pieChartData: SingleDataSet = [70, 25, 5];
+  public pieChartType: ChartType = 'pie';
+  public pieChartLegend = true;
+  public pieChartPlugins = [];
+
+
+  public pieChartOptionsTwo: ChartOptions = {
+    responsive: true,
+  };
+  public pieChartLabelsTwo: Label[] = ['Ética', 'Atención al detalle', 'Escucha Activa', 'Ganas de aprender'];
+  public pieChartDataTwo: SingleDataSet = [30, 35, 15, 20];
+  public pieChartTypeTwo: ChartType = 'pie';
+  public pieChartLegendTwo = true;
+  public pieChartPluginsTwo = [];
+
+  public pieChartOptionsThree: ChartOptions = {
+    responsive: true,
+  };
+  public pieChartLabelsThree: Label[] = ['Programación', 'Soporte', 'Infraestructura'];
+  public pieChartDataThree: SingleDataSet = [50, 20, 30];
+  public pieChartTypeThree: ChartType = 'pie';
+  public pieChartLegendThree = true;
+  public pieChartPluginsThree = [];
 
   constructor(
     private location: LocationStrategy,

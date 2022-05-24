@@ -21,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { ChartsModule } from 'ng2-charts';
 
 
 const appRoutes: Routes = [
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
     FooterComponent
   ],
   imports: [
+    ChartsModule,
     MatIconModule,
     MatButtonModule,
     MatInputModule,
