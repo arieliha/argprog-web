@@ -2,15 +2,15 @@
 
     <h2>Argentina Programa Trabajo Práctico</h2>
     <h5>Validación inicial</h5>
-    <div style="display: inline-flex; justify-items: center; align-items: center; margin: 1rem;">
+    <div style="display: flex; flex-direction: column; justify-items: center; align-items: center; margin: 1rem;">
         <div style="margin-right: 1rem;">
-            <h5>{{num1}} - {{num2}}</h5>
+            <h3>{{num1}} - {{num2}}</h3>
         </div>
         <div>
-            <input type="text" [(ngModel)]="userresult" placeholder="resultado de la cuenta">
+            <input matInput type="text" [(ngModel)]="userresult" placeholder="resultado">
         </div>
     </div>
-    <button (click)="validate()">validar</button>
+    <button mat-icon-button color="primary" (click)="validate()">validar</button>
     <div *ngIf="showEnter">
         <a routerLink="/argProgMain" class="btn">Entrar</a>
     </div>
