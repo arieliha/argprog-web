@@ -5,7 +5,9 @@ import { AboutMe } from '../../AboutMe';
 import { Experience } from '../../Experience';
 import { LocationStrategy } from '@angular/common';
 import { Education } from '../../Education';
+import { Project } from '../../Project';
 import { EducationService } from '../../service/education.service';
+import { ProjectService } from '../../service/project.service';
 import { ChartType, ChartOptions } from 'chart.js';
 import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, } from 'ng2-charts';
 
@@ -20,6 +22,7 @@ export class ArgProgMainComponent implements OnInit {
   experiences: Experience[] = [];
   // isUpdate: boolean = false;
   educations:  Education[] = [];
+  projects: Project[] = [];
 
   public pieChartOptions: ChartOptions = {
     responsive: true,
@@ -53,7 +56,8 @@ export class ArgProgMainComponent implements OnInit {
     private location: LocationStrategy,
     private aboutMeService: AboutMeService,
     private experienceService: ExperienceService,
-    private educationService: EducationService
+    private educationService: EducationService,
+    private projectService: ProjectService
   ) { 
     history.pushState(null, null, window.location.href);  
     this.location.onPopState(() => {
@@ -69,6 +73,9 @@ export class ArgProgMainComponent implements OnInit {
           this.experiences = exp.sort((a,b) => a.order_experience - b.order_experience);
             this.educationService.getEducation().subscribe(educ => {
               this.educations = educ.sort((a,b) => a.order_education - b.order_education);
+                this.projectService.getProjects().subscribe(projects => {
+                  this.projects = projects.sort((a,b) => a.order_project - b.order_project);
+              });
             });
           
       });
@@ -78,6 +85,18 @@ export class ArgProgMainComponent implements OnInit {
   // onUpdate() {
   //   this.isUpdate = !this.isUpdate;
   // }
+
+  addProject(pr: Project) {
+    console.log(pr);
+    if (this.projects.length > 0) {
+      pr.order_project = this.projects[this.projects.length - 1].order_project + 1;
+    } else {
+      pr.order_project = 1;
+    }
+    this.projectService.addProject(pr).subscribe((a) => {
+      this.projects.push(a);
+    })
+  }
   addExperience(exp: Experience) {
     console.log(exp);
     if (this.experiences.length > 0) {
@@ -112,6 +131,12 @@ export class ArgProgMainComponent implements OnInit {
       this.educations.push(e);
     })
   }
+  updateProject(pr: Project) {
+
+    this.projectService.updateProject(pr).subscribe((r) => {
+      if (r) { alert("Cambios guardados") }
+    });
+  }
   updateExperience(exp: Experience) {
 
     this.experienceService.updateExperience(exp).subscribe((r) => {
@@ -128,6 +153,14 @@ export class ArgProgMainComponent implements OnInit {
 
     this.educationService.updateEducation(educ).subscribe((e) => {
       if (e) { alert("Cambios guardados") }
+    });
+  }
+  deleteProject(pr: Project) {
+    this.projectService.deleteProject(pr).subscribe(() => {
+      this.projects = this.projects.filter(a => {
+        console.log("delete project " + pr.id)
+        return a.id !== pr.id
+      });
     });
   }
   deleteExperience(exp: Experience) {
@@ -225,6 +258,29 @@ export class ArgProgMainComponent implements OnInit {
       }
     }
   }
+  moveUpPr(pr: Project) {
+    const index = this.projects.findIndex(x => x.id === pr.id);
+
+    if (this.projects.length > 1 && index > 0) {
+      const tmp = this.projects[index - 1];
+      const tmporder = this.projects[index - 1].order_project;
+      const tmporderindex = this.projects[index].order_project;
+      if (tmp) {
+        this.projects[index - 1] = this.projects[index];
+        this.projects[index - 1].order_project = tmporder;
+        this.projects[index] = tmp;
+        this.projects[index].order_project = tmporderindex;
+
+        this.projectService.updateProject(this.projects[index]).subscribe(x => {
+          if (x) {
+            this.projectService.updateProject(this.projects[index - 1]).subscribe(y => {
+              // if (y) {alert ("Cambios guardados")}
+            });
+          }
+        });
+      }
+    }
+  }
   moveDown(ame: AboutMe) {
     const index = this.aboutme.findIndex(x => x.id === ame.id);
 
@@ -298,6 +354,32 @@ export class ArgProgMainComponent implements OnInit {
         this.educationService.updateEducation(this.educations[index]).subscribe(x => {
           if (x) {
             this.educationService.updateEducation(this.educations[index + 1]).subscribe(y => {
+              // if (y) {alert ("Cambios guardados")}
+            });
+          }
+        });
+      }
+    }
+  }
+  moveDownPr(pr: Project) {
+    const index = this.projects.findIndex(x => x.id === pr.id);
+
+    if (this.projects.length > 1 && index < this.projects.length - 1) {
+      const tmp = this.projects[index + 1];
+      const tmporder = this.projects[index + 1].order_project;
+      const tmporderindex = this.projects[index].order_project;
+
+      if (tmp) {
+        this.projects[index + 1] = this.projects[index];
+        this.projects[index + 1].order_project = tmporder;
+
+        this.projects[index] = tmp;
+        this.projects[index].order_project = tmporderindex;
+
+
+        this.projectService.updateProject(this.projects[index]).subscribe(x => {
+          if (x) {
+            this.projectService.updateProject(this.projects[index + 1]).subscribe(y => {
               // if (y) {alert ("Cambios guardados")}
             });
           }

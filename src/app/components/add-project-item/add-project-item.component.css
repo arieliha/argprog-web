@@ -1,0 +1,14 @@
+.project {
+    background-color: white;
+    margin: 5px;
+    padding: 10px ;
+    
+}
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    
+}

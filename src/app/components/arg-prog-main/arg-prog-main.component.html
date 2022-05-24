@@ -9,7 +9,7 @@
                 <img src="assets/banner.jpg" alt="Random first slide">
               </div>
               <div class="carousel-caption">
-                <h3>Atardecer en la ciudad</h3>
+                <h3>Soledad</h3>
                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
               </div>
             </ng-template>
@@ -18,7 +18,7 @@
                 <img src="assets/banner2.jpg" alt="Random second slide">
               </div>
               <div class="carousel-caption">
-                <h3>Gotas en soledad</h3>
+                <h3>Esperanza</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
             </ng-template>
@@ -72,16 +72,15 @@
                         {{educ.period}} <br />
                         {{educ.description}} <br />
                     </div>
-
                     <div style="padding: 2rem;">
-                        Idiomas
+                        Habilidades Duras
                         <canvas baseChart 
-                            [data]="pieChartData" 
-                            [labels]="pieChartLabels" 
-                            [chartType]="pieChartType"
-                            [options]="pieChartOptions"
-                            [plugins]="pieChartPlugins"
-                            [legend]="pieChartLegend">
+                            [data]="pieChartDataThree" 
+                            [labels]="pieChartLabelsThree" 
+                            [chartType]="pieChartTypeThree"
+                            [options]="pieChartOptionsThree"
+                            [plugins]="pieChartPluginsThree"
+                            [legend]="pieChartLegendThree">
                         </canvas>
                     </div>
                     <div style="padding: 2rem;">
@@ -95,18 +94,28 @@
                             [legend]="pieChartLegendTwo">
                         </canvas>
                     </div>
-
                     <div style="padding: 2rem;">
-                        Habilidades Duras
+                        Idiomas
                         <canvas baseChart 
-                            [data]="pieChartDataThree" 
-                            [labels]="pieChartLabelsThree" 
-                            [chartType]="pieChartTypeThree"
-                            [options]="pieChartOptionsThree"
-                            [plugins]="pieChartPluginsThree"
-                            [legend]="pieChartLegendThree">
+                            [data]="pieChartData" 
+                            [labels]="pieChartLabels" 
+                            [chartType]="pieChartType"
+                            [options]="pieChartOptions"
+                            [plugins]="pieChartPlugins"
+                            [legend]="pieChartLegend">
                         </canvas>
                     </div>
+                    <div style="background-color: black; color: white; text-align: left; padding: 0.5rem; margin-top: 0.5rem;">
+                        Proyectos </div>
+                    <div *ngFor="let pr of projects" style="display: block; text-align: left;">
+                        <br />
+                        {{pr.title}} <br />
+                        {{pr.date}} <br />
+                        {{pr.description}} <br />
+                        {{pr.link}} <br />
+                    </div>
+
+                    
                 </div>
             </div>
 
@@ -141,6 +150,18 @@
                     (onArrowDown)="moveDownEduc(educ)">
                 </app-add-education-item>
                 <add-education (onAddEducation)="addEducation($event)"></add-education>
+
+            </div>
+
+            <div style="border: 1px solid gray; margin: 1rem; padding: 1rem; border-radius: 1rem;">
+
+                Proyectos
+                <app-add-project-item *ngFor="let pr of projects" [project]="pr" [begin]="projects[0].id"
+                    [final]="projects[projects.length -1].id" (onDeleteProject)="deleteProject(pr)"
+                    (onUpdateProject)="updateProject(pr)" (onArrowUp)="moveUpPr(pr)"
+                    (onArrowDown)="moveDownPr(pr)">
+                </app-add-project-item>
+                <add-project (onAddProject)="addProject($event)"></add-project>
 
             </div>
 

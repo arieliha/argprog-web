@@ -3,7 +3,7 @@
     [ngClass]="{ reminder: aboutme.reminder }"
     (click)="onToggle(aboutme)"
 > -->
-<div class="education">
+<div class="project">
     <div style="display: flex; width: 100%; justify-content: flex-end;">
         <div style="display: inline-block; margin: 1rem;">
             <button mat-icon-button [ngStyle]="{'color':'red'}" (click)="onDelete()">
@@ -27,35 +27,37 @@
         </div>
     </div>
 
+
     <div class="form">
-    <mat-form-field appearance="fill">
-        <mat-label>Título</mat-label>
-        <input matInput type="text" [(ngModel)]="model.title" [disabled]="!isupdate" />
-    </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text" [(ngModel)]="model.title" [disabled]="!isupdate" />
+        </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Instituto</mat-label>
-        <input matInput type="text" [(ngModel)]="model.institute" [disabled]="!isupdate" />
-    </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha</mat-label>
+            <input matInput type="text" [(ngModel)]="model.date" [disabled]="!isupdate" />
+        </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Período</mat-label>
-        <input matInput type="text" [(ngModel)]="model.period" [disabled]="!isupdate" />
-    </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Descripción</mat-label>
+            <input matInput type="text" [(ngModel)]="model.description" [disabled]="!isupdate" />
+        </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Descripción</mat-label>
-        <textarea matInput type="text" [(ngModel)]="model.description" [disabled]="!isupdate"></textarea>
-    </mat-form-field>
-
+        <mat-form-field appearance="fill">
+            <mat-label>Enlace</mat-label>
+            <textarea matInput type="text" [(ngModel)]="model.link" [disabled]="!isupdate"></textarea>
+        </mat-form-field>
     </div>
 
+
+        
+    
     <div style="width: 100%; text-align: center; background-color:darkseagreen" *ngIf="isupdate">
     
-        <button mat-icon-button (click)="onSubmit()" aria-placeholder="Guardar Cambios">
-        <mat-icon>save</mat-icon>
-        </button>
-        
+            <button mat-icon-button (click)="onSubmit()" aria-placeholder="Guardar Cambios">
+            <mat-icon>save</mat-icon>
+            </button>
+            
     </div>
-
 </div>
