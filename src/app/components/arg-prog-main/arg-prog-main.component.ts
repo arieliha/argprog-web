@@ -68,7 +68,7 @@ export class ArgProgMainComponent implements OnInit {
         this.experienceService.getExperience().subscribe(exp => {
           this.experiences = exp.sort((a,b) => a.order_experience - b.order_experience);
             this.educationService.getEducation().subscribe(educ => {
-              this.educations = educ;
+              this.educations = educ.sort((a,b) => a.order_education - b.order_education);
             });
           
       });
