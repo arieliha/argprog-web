@@ -1,17 +1,14 @@
 .aboutme {
-    background-color: #f4f4f4;
+    background-color: white;
     margin: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
+    padding: 10px ;
+    
 }
 
-.aboutme.reminder {
-    border-left: 5px solid orange;
 
-}
-
-.aboutme h3 {
+.form {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    max-width: 600px;
+    
 }

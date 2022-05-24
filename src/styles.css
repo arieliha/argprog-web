@@ -9,9 +9,7 @@
     margin: 0;
     padding: 0;
 }
-body{
-    font-family: sans-serif;    
-}
+
 
 .container{
     max-width: 500px;
@@ -77,3 +75,5 @@ body{
     flex: 2;
     height: 20px;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

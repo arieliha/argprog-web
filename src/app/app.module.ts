@@ -16,6 +16,10 @@ import { FormsModule} from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon'
 
 
 const appRoutes: Routes = [
@@ -43,11 +47,15 @@ const appRoutes: Routes = [
     FooterComponent
   ],
   imports: [
+    MatIconModule,
+    MatButtonModule,
+    MatInputModule,
     BrowserModule,
     FontAwesomeModule,  
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes, {enableTracing: true})
+    RouterModule.forRoot(appRoutes, {enableTracing: true}),
+    BrowserAnimationsModule
     
   ],
   providers: [ Title ],
