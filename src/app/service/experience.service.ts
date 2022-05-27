@@ -14,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ExperienceService {
-  private apiUrl = 'http://localhost:8080/experience'
+  private apiUrl = 'https://protected-forest-18948.herokuapp.com/experience'
   constructor(
     private http: HttpClient
 

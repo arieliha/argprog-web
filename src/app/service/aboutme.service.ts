@@ -14,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AboutMeService {
-  private apiUrl = 'http://localhost:8080/aboutme'
+  private apiUrl = 'https://protected-forest-18948.herokuapp.com/aboutme'
   constructor(
     private http: HttpClient
 

@@ -14,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ProjectService {
-  private apiUrl = 'http://localhost:8080/project'
+  private apiUrl = 'https://protected-forest-18948.herokuapp.com/project'
   constructor(
     private http: HttpClient
 

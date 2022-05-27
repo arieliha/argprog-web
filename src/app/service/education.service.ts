@@ -14,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class EducationService {
-  private apiUrl = 'http://localhost:8080/education'
+  private apiUrl = 'https://protected-forest-18948.herokuapp.com/education'
   constructor(
     private http: HttpClient
 
