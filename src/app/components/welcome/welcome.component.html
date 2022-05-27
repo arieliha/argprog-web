@@ -6,12 +6,15 @@
         <div style="margin-right: 1rem;">
             <h3>{{num1}} - {{num2}}</h3>
         </div>
-        <div>
+        <div style="margin: 0.5rem;">
             <input matInput type="text" [(ngModel)]="userresult" placeholder="resultado">
+        </div>
+        <div style="margin: 0.5rem;">
+            <input matInput type="password" [(ngModel)]="password" placeholder="password">
         </div>
     </div>
     <button mat-icon-button color="primary" (click)="validate()">validar</button>
-    <div *ngIf="showEnter">
+    <!-- <div *ngIf="showEnter">
         <a routerLink="/argProgMain" class="btn">Entrar</a>
-    </div>
+    </div> -->
 </div>

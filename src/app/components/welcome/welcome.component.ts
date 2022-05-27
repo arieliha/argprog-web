@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -10,8 +11,12 @@ export class WelcomeComponent implements OnInit {
   num2: number = 0;
   result: number;
   userresult: string;
+  password: string;
+  passwordset: string = "loop2022";
   showEnter = false;
-  constructor() { }
+  constructor(
+    public router: Router
+  ) { }
 
   ngOnInit(): void {
     this.num1 = this.randomIntFromInterval(10, 20);
@@ -23,8 +28,12 @@ export class WelcomeComponent implements OnInit {
 
   validate(): void {
 
-    if(this.result === parseInt(this.userresult)){
-      this.showEnter = true;
+    if(this.result === parseInt(this.userresult) && (this.passwordset === this.password)){
+      // this.showEnter = true;
+      this.router.navigate(['/argProgMain']);
+
+    } else {
+      alert("login incorrecto");
     }
   }
 
